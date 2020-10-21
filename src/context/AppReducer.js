@@ -3,19 +3,19 @@ export default (state, action) => {
     case "REMOVE_ALGO":
       return {
         ...state,
-        algo: state.algo.filter(
+        algos: state.algos.filter(
           algo => algo.id !== action.payload
         )
       };
     case "ADD_ALGO":
       return {
         ...state,
-        algo: [...state.algo, action.payload]
+        algos: [...state.algos, action.payload]
       };
     case "EDIT_ALGO":
       const updatedAlgo = action.payload;
 
-      const updatedAlgos = state.algo.map(algo => {
+      const updatedAlgos = state.algos.map(algo => {
         if (algo.id === updatedAlgo.id) {
           return updatedAlgo;
         }
@@ -24,7 +24,7 @@ export default (state, action) => {
 
       return {
         ...state,
-        algo: updatedAlgos
+        algos: updatedAlgos
       };
     default:
       return state;
